@@ -27,7 +27,7 @@ venv/
 
 # Harbor offline installer
 harbor-offline-installer-*.tgz
-harbor/
+/harbor/
 
 # Editors / OS
 .vscode/
