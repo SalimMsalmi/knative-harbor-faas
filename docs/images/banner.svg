@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-label="knative-harbor-faas: self-hosted Functions-as-a-Service on bare-metal Kubernetes">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#13233f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f8cff"/>
+      <stop offset="1" stop-color="#3ddc97"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#6b7fa3"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="400" rx="16" fill="url(#bg)"/>
+  <rect width="1280" height="400" rx="16" fill="url(#grid)"/>
+  <rect x="64" y="84" width="72" height="6" rx="3" fill="url(#accent)"/>
+
+  <!-- Title block -->
+  <text x="64" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="54" font-weight="700" fill="#f4f7fb">knative-harbor-faas</text>
+  <text x="64" y="206" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#a9b8d3">Self-hosted Functions-as-a-Service</text>
+  <text x="64" y="238" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#a9b8d3">on bare-metal Kubernetes</text>
+
+  <!-- Chips -->
+  <g font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
+    <rect x="64" y="282" width="156" height="34" rx="17" fill="#4f8cff" fill-opacity="0.16" stroke="#4f8cff" stroke-opacity="0.55"/>
+    <text x="142" y="304" fill="#9cc0ff">Knative Serving</text>
+    <rect x="232" y="282" width="92" height="34" rx="17" fill="#b58cff" fill-opacity="0.16" stroke="#b58cff" stroke-opacity="0.55"/>
+    <text x="278" y="304" fill="#d0b8ff">Kourier</text>
+    <rect x="336" y="282" width="86" height="34" rx="17" fill="#3ddc97" fill-opacity="0.14" stroke="#3ddc97" stroke-opacity="0.55"/>
+    <text x="379" y="304" fill="#86ecc0">Harbor</text>
+    <rect x="434" y="282" width="142" height="34" rx="17" fill="#ffb454" fill-opacity="0.14" stroke="#ffb454" stroke-opacity="0.55"/>
+    <text x="505" y="304" fill="#ffd08f">Scale-to-zero</text>
+  </g>
+
+  <!-- Pipeline -->
+  <g font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+    <!-- code -->
+    <rect x="820" y="52" width="396" height="76" rx="12" fill="#0f1a30" stroke="#2a3b5e"/>
+    <rect x="840" y="72" width="36" height="36" rx="8" fill="#4f8cff" fill-opacity="0.18"/>
+    <text x="858" y="97" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="17" font-weight="700" fill="#9cc0ff">&lt;/&gt;</text>
+    <text x="892" y="86" font-size="17" font-weight="600" fill="#f4f7fb">Paste a Python handler</text>
+    <text x="892" y="109" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#7f90b0">def handle(event, context)</text>
+
+    <path d="M1018 132V156" stroke="#6b7fa3" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- registry -->
+    <rect x="820" y="164" width="396" height="76" rx="12" fill="#0f1a30" stroke="#2a3b5e"/>
+    <rect x="840" y="184" width="36" height="36" rx="8" fill="#3ddc97" fill-opacity="0.16"/>
+    <g fill="none" stroke="#86ecc0" stroke-width="2">
+      <ellipse cx="858" cy="195" rx="10" ry="4"/>
+      <path d="M848 195v14c0 2.2 4.5 4 10 4s10-1.800 10-4v-14"/>
+      <path d="M848 202c0 2.2 4.5 4 10 4s10-1.800 10-4"/>
+    </g>
+    <text x="892" y="198" font-size="17" font-weight="600" fill="#f4f7fb">Built and pushed to Harbor</text>
+    <text x="892" y="221" font-size="14" fill="#7f90b0">private registry · TLS · robot account</text>
+
+    <path d="M1018 244V268" stroke="#6b7fa3" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- knative -->
+    <rect x="820" y="276" width="396" height="76" rx="12" fill="#0f1a30" stroke="#2a3b5e"/>
+    <rect x="840" y="296" width="36" height="36" rx="8" fill="#ffb454" fill-opacity="0.16"/>
+    <path d="M861 300l-10 16h7l-3 12 11-17h-7z" fill="#ffd08f"/>
+    <text x="892" y="310" font-size="17" font-weight="600" fill="#f4f7fb">Served by Knative</text>
+    <text x="892" y="333" font-size="14" fill="#7f90b0">0 ↔ N pods · cold start under 2 s</text>
+    <g>
+      <circle cx="1138" cy="314" r="7" fill="none" stroke="#3ddc97" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="3 3"/>
+      <circle cx="1162" cy="314" r="7" fill="#3ddc97"/>
+      <circle cx="1186" cy="314" r="7" fill="#3ddc97" fill-opacity="0.55"/>
+    </g>
+  </g>
+</svg>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/banner.svg" alt="knative-harbor-faas — self-hosted Functions-as-a-Service on bare-metal Kubernetes" width="100%">
+</p>
+
 # knative-harbor-faas
 
 **A self-hosted Functions-as-a-Service platform on bare-metal Kubernetes — Knative Serving, Kourier, a private Harbor registry, and a self-service deployment portal.**
