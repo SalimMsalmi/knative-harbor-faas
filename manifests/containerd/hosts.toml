@@ -1,0 +1,13 @@
+# /etc/containerd/certs.d/192.168.1.5/hosts.toml
+#
+# Registry host configuration for containerd (config_path = /etc/containerd/certs.d).
+# Install on EVERY node that may schedule function pods, together with the
+# Harbor CA at /etc/containerd/certs.d/192.168.1.5/ca.crt.
+# No containerd restart is required for certs.d changes, but it does no harm.
+
+server = "https://192.168.1.5"
+
+[host."https://192.168.1.5"]
+  capabilities = ["pull", "resolve", "push"]
+  ca = "/etc/containerd/certs.d/192.168.1.5/ca.crt"
+  skip_verify = false

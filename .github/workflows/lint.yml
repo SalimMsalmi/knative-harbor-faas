@@ -1,0 +1,45 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Shell syntax
+        run: |
+          find . -name '*.sh' -print0 | xargs -0 -n1 bash -n
+
+      - name: ShellCheck (errors only)
+        run: |
+          find . -name '*.sh' -print0 | xargs -0 shellcheck -S error
+
+      - name: Python syntax
+        run: |
+          python3 -m compileall -q portal functions
+
+      - name: YAML syntax
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 - <<'EOF'
+          import pathlib, sys, yaml
+          failed = False
+          for path in sorted(pathlib.Path(".").rglob("*.yaml")) + sorted(pathlib.Path(".").rglob("*.yml")):
+              if ".git/" in path.as_posix():
+                  continue
+              try:
+                  list(yaml.safe_load_all(path.read_text()))
+                  print("ok  ", path)
+              except yaml.YAMLError as exc:
+                  failed = True
+                  print("FAIL", path, exc)
+          sys.exit(1 if failed else 0)
+          EOF

@@ -1,0 +1,13 @@
+# Selects Kourier as the Knative networking layer.
+# Apply with:
+#   kubectl patch configmap/config-network -n knative-serving --type merge \
+#     -p '{"data":{"ingress-class":"kourier.ingress.networking.knative.dev"}}'
+# or:
+#   kubectl apply -f manifests/knative/config-network-patch.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-network
+  namespace: knative-serving
+data:
+  ingress-class: "kourier.ingress.networking.knative.dev"

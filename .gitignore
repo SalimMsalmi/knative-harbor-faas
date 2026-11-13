@@ -1,0 +1,36 @@
+# Secrets / credentials — never commit
+.env
+*.env
+!.env.example
+*.key
+*.pem
+*.crt
+*.csr
+!docs/**/*.crt
+kubeconfig
+*.kubeconfig
+config.json
+harbor.yml
+!manifests/harbor/harbor.yml.example
+
+# Portal build artifacts (generated per deployment)
+portal/builds/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.tox/
+.pytest_cache/
+
+# Harbor offline installer
+harbor-offline-installer-*.tgz
+harbor/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

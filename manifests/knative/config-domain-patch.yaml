@@ -1,0 +1,15 @@
+# Default domain for Knative routes.
+# sslip.io is a public "magic DNS" service: any *.192.168.1.5.sslip.io name
+# resolves to 192.168.1.5, so no local DNS server is needed in the lab.
+# Resulting URLs look like: http://<function>.default.192.168.1.5.sslip.io
+#
+# Apply with:
+#   kubectl patch configmap/config-domain -n knative-serving --type merge \
+#     -p '{"data":{"192.168.1.5.sslip.io":""}}'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-domain
+  namespace: knative-serving
+data:
+  192.168.1.5.sslip.io: ""

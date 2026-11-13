@@ -1,0 +1,17 @@
+[Unit]
+Description=FaaS Portal - Python Function Deployment Service
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/faas-portal
+ExecStart=/usr/bin/python3 /opt/faas-portal/app.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+# CRITICAL for private registries with self-signed certificates.
+#
+# By default the Knative controller resolves every image tag to a digest by
+# contacting the registry over HTTPS. The controller pod does NOT trust the
+# node-level Harbor CA, so every Revision fails with:
+#   RevisionFailed: ... x509: certificate signed by unknown authority
+#
+# Listing the registry here tells the controller to skip tag->digest
+# resolution for it and hand the tag straight to the kubelet (which trusts
+# Harbor via /etc/containerd/certs.d). Restart the controller afterwards:
+#
+#   kubectl patch configmap/config-deployment -n knative-serving --type merge \
+#     -p '{"data":{"registries-skipping-tag-resolving":"192.168.1.5"}}'
+#   kubectl rollout restart deployment/controller -n knative-serving
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-deployment
+  namespace: knative-serving
+data:
+  registries-skipping-tag-resolving: "192.168.1.5"

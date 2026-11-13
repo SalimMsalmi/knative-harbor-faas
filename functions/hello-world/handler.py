@@ -1,0 +1,8 @@
+import json
+
+def handle(event, context):
+    return {
+        'statusCode': 200,
+        'body': json.dumps({'message': 'Hello, World!'}),
+        'headers': {'Content-Type': 'application/json'}
+    }
